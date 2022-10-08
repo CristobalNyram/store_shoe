@@ -19,4 +19,30 @@ Route::get('/', function () {
 
 Auth::routes();
 
-Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+Route::group(['middleware' => 'auth'], function () {
+    Route::prefix('admin')->group(function () {
+
+
+
+        Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+
+
+        //brand start
+        // Route::resource('brand','BrandController');
+        //bran end
+
+
+        //categories start
+        //categories end
+
+        //models start
+        //models end
+
+        //shoes start
+
+        //shoes end
+
+
+
+    });
+});
