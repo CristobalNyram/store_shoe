@@ -13,7 +13,7 @@ class StoreShoeRequest extends FormRequest
      */
     public function authorize()
     {
-        return false;
+        return true;
     }
 
     /**
@@ -24,7 +24,15 @@ class StoreShoeRequest extends FormRequest
     public function rules()
     {
         return [
-            //
+            'title'=>'required',
+            'description'=>'required',
+            'price'=>'required|numeric',
+            'stock'=>'required|numeric',
+            'category_id'=>'required|min:1',
+            'model_id'=>'required|min:1',
+            'image_url'=>'image|mimes:jpeg,png,jpg,gif',
+            'brand_id'=>'required|min:1',
+
         ];
     }
 }

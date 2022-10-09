@@ -29,15 +29,18 @@
                                 @endforeach
                    @endif
 
-
+                   @php
+                   $route_image_shoes ='storage/';
+                   @endphp
+                   <div class="table-responsive">
                     <table class="table">
                         <thead>
                             <tr>
                                 <th class="text-center">#</th>
-                                <th>Nombre</th>
-                                <th>Descripción</th>
-                                <th>Imagen</th>
-                                <th>Precio</th>
+                                <th  scope="col">Nombre</th>
+                                <th  scope="col">Descripción</th>
+                                <th  scope="col">Imagen</th>
+                                <th  scope="col">Precio</th>
                                 {{-- <th>Categoria</th>
                                 <th>Modelo</th>
                                 <th>Marca</th> --}}
@@ -51,10 +54,23 @@
                                 @foreach ($shoes as $shoe )
                                 <tr>
 
-                                            <td class="text-center">{{ $shoe->id }}</td>
+                                            <td class="text-center" scope="row">{{ $shoe->id }}</td>
                                             <td>{{ $shoe->title }}</td>
                                             <td>{{ $shoe->description }}</td>
-                                            <td>{{  $shoe->image_url }} s</td>
+                                            <td class="">
+                                                @empty ($shoe->image_url)
+                                                @else
+
+                                                <a type="button" class="" data-bs-toggle="modal" data-bs-target="#viewimagemodal" onclick="viewImage(event,'{{  url($route_image_shoes.$shoe->image_url) }}');">
+                                                    Ver imagen
+                                                    </a>
+                                                @endempty
+
+
+
+
+
+                                            </td>
                                             <td>{{  $shoe->stock }}</td>
                                             {{-- <td>{{  $shoe->category_id }}</td>
                                             <td>{{  $shoe->model_id }}</td>
@@ -102,6 +118,8 @@
 
                         </tbody>
                     </table>
+                   </div>
+
 
 
                 </div>
@@ -109,4 +127,42 @@
         </div>
     </div>
 </div>
+
+
+<!-- Button trigger modal -->
+<script>
+        function viewImage(event,url_image)
+        {
+            let current_input='';
+            current_input=event.target;
+            let set_in=  document.getElementById('moda_place_image');
+            set_in.src='';
+            set_in.src=url_image;
+
+        }
+</script>
+
+  <!-- Modal -->
+  <div class="modal fade" id="viewimagemodal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="exampleModalLabel">Imagen</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+            <div class="col-12">
+                <img id="moda_place_image" class="rounded mx-auto d-block" alt="..." width="200">
+
+            </div>
+
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
+        </div>
+      </div>
+    </div>
+  </div>
 @endsection
+
+

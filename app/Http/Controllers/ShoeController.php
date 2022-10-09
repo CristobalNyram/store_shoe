@@ -4,7 +4,11 @@ namespace App\Http\Controllers;
 
 use App\Models\Shoe;
 use App\Http\Requests\StoreShoeRequest;
+use Illuminate\Support\Facades\Storage;
 use App\Http\Requests\UpdateShoeRequest;
+use App\Models\Brand;
+use App\Models\Category;
+use App\Models\Modelsho;
 
 class ShoeController extends Controller
 {
@@ -32,9 +36,16 @@ class ShoeController extends Controller
      */
     public function create()
     {
+        $categories_active=Category::all()->where('status','=','2');
+        $brands_active=Brand::all()->where('status','=','2');
+        $models_active=Modelsho::all()->where('status','=','2');
+
         $variables=
         [
             'menu'=>'shoes',
+            'categories'=>$categories_active,
+            'brands'=>$brands_active,
+            'models'=>$models_active,
         ];
         return view('shoes.create')->with($variables);
     }
@@ -47,13 +58,15 @@ class ShoeController extends Controller
      */
     public function store(StoreShoeRequest $request)
     {
+
+
         $post = Shoe::create([
             'user_id' => auth()->user()->id
         ] + $request->all());
 
         //imagen
-        if ($request->file('file')) {
-            $post->image_url = $request->file('file')->store('shoes', 'public');
+        if ($request->file('image_url')) {
+            $post->image_url = $request->file('image_url')->store('shoes', 'public');
             $post->save();
         }
 
@@ -106,7 +119,10 @@ class ShoeController extends Controller
      */
     public function update(UpdateShoeRequest $request, Shoe $shoe)
     {
-        if(  $shoe->update($request->all()))
+        if(  $shoe->update([
+            'user_id' => auth()->user()->id
+              ] +$request->all())
+        )
         {
             return back()->with('success','Se ha actualizado correctamente');
         }
@@ -136,4 +152,5 @@ class ShoeController extends Controller
 
          }
     }
+
 }

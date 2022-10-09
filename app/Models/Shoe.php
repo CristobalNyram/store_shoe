@@ -23,6 +23,13 @@ class Shoe extends Model
         ];
     }
 */
-    protected $fillable=['title','description','price','stock','category_id','model_id','brand_id'];
+    protected $fillable=['title','description','price','stock','user_id','category_id','model_id','brand_id'];
+
+    public function  getImageAttribute()
+    {
+
+            // return url("storage/app/public/".$this->image_url);
+
+    }
 
 }
