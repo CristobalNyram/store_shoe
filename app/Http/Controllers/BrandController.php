@@ -135,15 +135,16 @@ class BrandController extends Controller
      */
     public function destroy(Brand $brand)
     {
-       $brand->status=2;
-
+       $brand->status=-2;
        if($brand->update())
        {
+        return back()->with('success','Se ha actualizado correctamente');
+    }
+    else
+    {
+        return back()->withErrors('No se ha actualizado correctamente');
 
-       }
-       else
-       {
+    }
 
-       }
     }
 }
