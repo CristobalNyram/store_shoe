@@ -3,6 +3,7 @@
 namespace Database\Seeders;
 
 use Illuminate\Database\Seeder;
+use App\Models\Shoe;
 
 class ShoeSeeder extends Seeder
 {
@@ -13,6 +14,7 @@ class ShoeSeeder extends Seeder
      */
     public function run()
     {
-        //
+        Shoe::factory()->count(24)->create();
+
     }
 }

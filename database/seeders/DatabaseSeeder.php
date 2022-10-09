@@ -3,7 +3,7 @@
 namespace Database\Seeders;
 
 use Illuminate\Database\Seeder;
-
+ use Database\Seeders\Shoe;
 class DatabaseSeeder extends Seeder
 {
     /**
@@ -17,6 +17,9 @@ class DatabaseSeeder extends Seeder
         $this->call([CategorySeeder::class]);
         $this->call([BrandSeeder::class]);
         $this->call([ModelshoSeeder::class]);
+        $this->call([ShoeSeeder::class]);
+
+
 
 
 

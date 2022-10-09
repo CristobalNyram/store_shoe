@@ -2,9 +2,11 @@
 
 namespace Database\Seeders;
 
+use App\Models\Shoe;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Database\Seeder;
 use Illuminate\Support\Facades\Hash;
+
 class UserSeeder extends Seeder
 {
     /**
@@ -22,5 +24,7 @@ class UserSeeder extends Seeder
             'created_at' => now(),
             'updated_at' => now()
         ]);
+
+
     }
 }

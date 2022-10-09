@@ -3,7 +3,7 @@
 @section('content')
 <div class="container">
     <div class="row justify-content-center">
-        <div class="col-md-10">
+        <div class="col-md-12">
             <div class="card">
                 <div class="card-header d-flex justify-content-between">{{ __('Zapatos') }}
                     <a href="{{ route('shoes.create') }}" class="btn btn-sm btn-primary ">Crear</a>
@@ -36,6 +36,13 @@
                                 <th class="text-center">#</th>
                                 <th>Nombre</th>
                                 <th>Descripción</th>
+                                <th>Imagen</th>
+                                <th>Precio</th>
+                                {{-- <th>Categoria</th>
+                                <th>Modelo</th>
+                                <th>Marca</th> --}}
+
+
                                 <th>Estatus</th>
                                 <th class="text-center">Acciones</th>
                             </tr>
@@ -44,9 +51,15 @@
                                 @foreach ($shoes as $shoe )
                                 <tr>
 
-                                            <td class="text-center">1</td>
+                                            <td class="text-center">{{ $shoe->id }}</td>
                                             <td>{{ $shoe->title }}</td>
                                             <td>{{ $shoe->description }}</td>
+                                            <td>{{  $shoe->image_url }} s</td>
+                                            <td>{{  $shoe->stock }}</td>
+                                            {{-- <td>{{  $shoe->category_id }}</td>
+                                            <td>{{  $shoe->model_id }}</td>
+                                            <td>{{  $shoe->brand_id }}</td> --}}
+
                                             <td>
                                                @if ( $shoe->status==2)
                                                <div class="text-success ">

@@ -17,9 +17,11 @@ class CreateShoesTable extends Migration
             $table->id();
             $table->string('title');
             $table->string('description');
-            $table->string('image_url');
+            $table->string('image_url')->nullable();
             $table->float('price');
             $table->bigInteger('stock');
+            $table->bigInteger('user_id')->unsigned();
+            // $table->bigInteger('slug')->unique();
 
             $table->unsignedBigInteger('category_id');
             $table->unsignedBigInteger('model_id');
@@ -28,9 +30,11 @@ class CreateShoesTable extends Migration
             $table->foreign('category_id')->references('id')->on('categories');
             $table->foreign('model_id')->references('id')->on('modelshos');
             $table->foreign('brand_id')->references('id')->on('brands');
+            $table->foreign('user_id')->references('id')->on('users');
 
 
-            $table->boolean('status');
+
+            $table->boolean('status')->default(2);
 
 
             $table->timestamps();
