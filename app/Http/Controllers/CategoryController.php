@@ -102,6 +102,9 @@ class CategoryController extends Controller
     public function update(UpdateCategoryRequest $request, Category $category)
     {
 
+
+
+
         if(  $category->update($request->all()))
         {
             return back()->with('success','Se ha actualizado correctamente');

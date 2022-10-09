@@ -15,6 +15,19 @@
                             {{ session('success') }}
                         </div>
                     @endif
+                    @if ($errors->any())
+
+                            @foreach ($errors->all() as $error)
+
+
+                            <div class="alert alert-danger" role="alert">
+                                                                {{ $error }}
+                                    <span aria-hidden="true">&times;</span>
+                                </button>
+                            </div>
+
+                            @endforeach
+                     @endif
 
                     <form
                         action="{{ route('category.store') }}"

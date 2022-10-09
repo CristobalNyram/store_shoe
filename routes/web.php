@@ -47,9 +47,21 @@ Route::group(['middleware' => 'auth'], function () {
 
 
         //shoes start
-        Route::resource('shoe', ShoeController::class);
+        Route::resource('shoes', ShoeController::class);
+
 
         //shoes end
+
+        //shopping cart start
+        //shopping cart end
+
+        // sales start
+        //sales end
+
+
+         //report start
+        //report end
+
 
 
 

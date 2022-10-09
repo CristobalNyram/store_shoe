@@ -15,7 +15,14 @@ class ModelshoController extends Controller
      */
     public function index()
     {
-        //
+        $models = Modelsho::all()->where('status','=','2');
+
+        $variables=
+        [
+            'menu'=>'categories',
+            'models'=>$models
+        ];
+        return view('models.index')->with($variables);
     }
 
     /**
@@ -25,8 +32,11 @@ class ModelshoController extends Controller
      */
     public function create()
     {
-        //
-    }
+        $variables=
+        [
+            'menu'=>'models',
+        ];
+        return view('models.create')->with($variables);    }
 
     /**
      * Store a newly created resource in storage.
@@ -36,7 +46,19 @@ class ModelshoController extends Controller
      */
     public function store(StoreModelshoRequest $request)
     {
-        //
+        $request_input = Modelsho::create($request->all());
+
+
+
+        if($request_input->save())
+        {
+            return back()->with('success','Se ha creado correctamente');
+        }
+        else
+        {
+            return back()->withErrors('No se ha creado correctamente');
+
+        }
     }
 
     /**
@@ -58,7 +80,13 @@ class ModelshoController extends Controller
      */
     public function edit(Modelsho $modelsho)
     {
-        //
+        $variables=
+        [
+            'menu'=>'categories',
+            'models'=>$modelsho
+        ];
+        return $modelsho;
+        //  view('models.edit')->with($variables);
     }
 
     /**
@@ -70,7 +98,16 @@ class ModelshoController extends Controller
      */
     public function update(UpdateModelshoRequest $request, Modelsho $modelsho)
     {
-        //
+
+        if(  $modelsho->update($request->all()))
+        {
+            return back()->with('success','Se ha actualizado correctamente');
+        }
+        else
+        {
+            return back()->withErrors('No se ha actualizado correctamente');
+
+        }
     }
 
     /**
@@ -81,6 +118,15 @@ class ModelshoController extends Controller
      */
     public function destroy(Modelsho $modelsho)
     {
-        //
+        $modelsho->status=-2;
+        if($modelsho->update())
+        {
+         return back()->with('success','Se ha actualizado correctamente');
+         }
+         else
+         {
+             return back()->withErrors('No se ha actualizado correctamente');
+
+         }
     }
 }

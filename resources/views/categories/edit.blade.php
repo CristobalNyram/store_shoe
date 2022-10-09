@@ -16,6 +16,19 @@
                         </div>
                     @endif
 
+                    @if ($errors->any())
+
+                            @foreach ($errors->all() as $error)
+
+
+                            <div class="alert alert-danger" role="alert">
+                                                                {{ $error }}
+                                    <span aria-hidden="true">&times;</span>
+                                </button>
+                            </div>
+
+                            @endforeach
+                    @endif
                     <form
                         action="{{ route('category.update',$category) }}"
                         method="POST"
@@ -32,7 +45,7 @@
                         </div> --}}
                         <div class="form-group mt-2">
                             <label>Descripción *</label>
-                            <input type="description" name="title" value="{{ $category->description }}" class="form-control" required>
+                            <input type="Description" name="description" value="{{ $category->description }}" class="form-control" required>
 
 
                         </div>

@@ -60,7 +60,7 @@
                                 <a class="nav-link" href="{{ route('category.index') }}">{{ __('Categorias') }}</a>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link" href="{{ route('brand.index') }}">{{ __('Modelos') }}</a>
+                                <a class="nav-link" href="{{ route('models.index') }}">{{ __('Modelos') }}</a>
                             </li>
                             <li class="nav-item">
                                 <a class="nav-link" href="{{ route('brand.index') }}">{{ __('Marcas') }}</a>

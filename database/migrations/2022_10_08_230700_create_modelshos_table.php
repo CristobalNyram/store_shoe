@@ -17,7 +17,7 @@ class CreateModelshosTable extends Migration
             $table->id();
             $table->string('title');
             $table->string('description');
-            $table->boolean('status');
+            $table->boolean('status')->default(2);
             $table->timestamps();
         });
     }

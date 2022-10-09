@@ -4,10 +4,10 @@
 <div class="container">
     <div class="row justify-content-center">
         <div class="col-md-8">
-            <a  href="{{ route('brand.index') }}" type="button" class="btn btn-warning mb-3 text-white" >Regresar</a>
+            <a  href="{{ route('models.index') }}" type="button" class="btn btn-warning mb-3 text-white" >Regresar</a>
 
             <div class="card">
-                <div class="card-header">Crear Marca</div>
+                <div class="card-header">Crear modelo</div>
 
                 <div class="card-body">
                     @if (session('success'))
@@ -15,9 +15,22 @@
                             {{ session('success') }}
                         </div>
                     @endif
+                    @if ($errors->any())
+
+                            @foreach ($errors->all() as $error)
+
+
+                            <div class="alert alert-danger" role="alert">
+                                                                {{ $error }}
+                                    <span aria-hidden="true">&times;</span>
+                                </button>
+                            </div>
+
+                            @endforeach
+                     @endif
 
                     <form
-                        action="{{ route('brand.store') }}"
+                        action="{{ route('models.store') }}"
                         method="POST"
                         enctype="multipart/form-data"
                     >

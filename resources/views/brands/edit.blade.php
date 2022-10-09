@@ -15,7 +15,19 @@
                             {{ session('success') }}
                         </div>
                     @endif
+                    @if ($errors->any())
 
+                            @foreach ($errors->all() as $error)
+
+
+                            <div class="alert alert-danger" role="alert">
+                                                                {{ $error }}
+                                    <span aria-hidden="true">&times;</span>
+                                </button>
+                            </div>
+
+                            @endforeach
+                     @endif
                     <form
                         action="{{ route('brand.update',$brand) }}"
                         method="POST"
@@ -23,7 +35,7 @@
                     >
                         <div class="form-group">
                             <label>Título *</label>
-                            <input type="title" name="title" value="{{ $brand->title }}" class="form-control" required>
+                            <input type="text" name="title" value="{{ $brand->title }}" class="form-control" required>
 
                         </div>
                         {{-- <div class="form-group">
@@ -32,7 +44,7 @@
                         </div> --}}
                         <div class="form-group mt-2">
                             <label>Descripción *</label>
-                            <input type="description" name="title" value="{{ $brand->description }}" class="form-control" required>
+                            <input type="text" name="description" value="{{ $brand->description }}" class="form-control" required>
 
 
                         </div>
