@@ -4,7 +4,7 @@
 <div class="container">
     <div class="row justify-content-center">
         <div class="col-md-8">
-            <a  href="{{ route('brand.index') }}" type="button" class="btn btn-warning mb-3 text-white" >Regresar</a>
+            <a  href="{{ route('shoes.index') }}" type="button" class="btn btn-warning mb-3 text-white" >Regresar</a>
 
             <div class="card">
                 <div class="card-header">Crear Marca</div>
@@ -17,7 +17,7 @@
                     @endif
 
                     <form
-                        action="{{ route('brand.store') }}"
+                        action="{{ route('shoes.store') }}"
                         method="POST"
                         enctype="multipart/form-data"
                     >

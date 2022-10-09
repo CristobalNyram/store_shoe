@@ -2,7 +2,6 @@
 
 namespace Database\Seeders;
 
-use App\Models\Modelsho;
 use Illuminate\Database\Seeder;
 
 class DatabaseSeeder extends Seeder
@@ -17,7 +16,7 @@ class DatabaseSeeder extends Seeder
         $this->call([UserSeeder::class]);
         $this->call([CategorySeeder::class]);
         $this->call([BrandSeeder::class]);
-        // $this->call([Modelsho::class]);
+        $this->call([ModelshoSeeder::class]);
 
 
 

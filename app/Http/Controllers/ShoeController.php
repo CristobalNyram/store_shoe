@@ -15,7 +15,14 @@ class ShoeController extends Controller
      */
     public function index()
     {
-        //
+        $shoes = Shoe::all()->where('status','=','2');
+
+        $variables=
+        [
+            'menu'=>'shoes',
+            'shoes'=>$shoes
+        ];
+        return view('shoes.index')->with($variables);
     }
 
     /**
@@ -25,7 +32,11 @@ class ShoeController extends Controller
      */
     public function create()
     {
-        //
+        $variables=
+        [
+            'menu'=>'shoes',
+        ];
+        return view('shoes.create')->with($variables);
     }
 
     /**
@@ -36,7 +47,19 @@ class ShoeController extends Controller
      */
     public function store(StoreShoeRequest $request)
     {
-        //
+        $request_input = Shoe::create($request->all());
+
+
+
+        if($request_input->save())
+        {
+            return back()->with('success','Se ha creado correctamente');
+        }
+        else
+        {
+            return back()->withErrors('No se ha creado correctamente');
+
+        }
     }
 
     /**
@@ -58,7 +81,12 @@ class ShoeController extends Controller
      */
     public function edit(Shoe $shoe)
     {
-        //
+        $variables=
+        [
+            'menu'=>'shoes',
+            'shoe'=>$shoe
+        ];
+        return view('shoes.edit')->with($variables);
     }
 
     /**
@@ -70,7 +98,15 @@ class ShoeController extends Controller
      */
     public function update(UpdateShoeRequest $request, Shoe $shoe)
     {
-        //
+        if(  $shoe->update($request->all()))
+        {
+            return back()->with('success','Se ha actualizado correctamente');
+        }
+        else
+        {
+            return back()->withErrors('No se ha actualizado correctamente');
+
+        }
     }
 
     /**
@@ -81,6 +117,15 @@ class ShoeController extends Controller
      */
     public function destroy(Shoe $shoe)
     {
-        //
+        $shoe->status=-2;
+        if($shoe->update())
+        {
+         return back()->with('success','Se ha actualizado correctamente');
+         }
+         else
+         {
+             return back()->withErrors('No se ha actualizado correctamente');
+
+         }
     }
 }

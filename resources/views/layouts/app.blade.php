@@ -54,7 +54,7 @@
                         @else
 
                             <li class="nav-item">
-                                <a class="nav-link" href="{{ route('brand.index') }}">{{ __('Zapatos') }}</a>
+                                <a class="nav-link" href="{{ route('shoes.index') }}">{{ __('Zapatos') }}</a>
                             </li>
                             <li class="nav-item">
                                 <a class="nav-link" href="{{ route('category.index') }}">{{ __('Categorias') }}</a>

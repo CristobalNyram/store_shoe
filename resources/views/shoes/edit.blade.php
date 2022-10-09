@@ -4,7 +4,7 @@
 <div class="container">
     <div class="row justify-content-center">
         <div class="col-md-8">
-            <a  href="{{ route('brand.index') }}" type="button" class="btn btn-warning mb-3 text-white" >Regresar</a>
+            <a  href="{{ route('shoes.index') }}" type="button" class="btn btn-warning mb-3 text-white" >Regresar</a>
 
             <div class="card">
                 <div class="card-header">Editar Marca</div>
@@ -17,13 +17,13 @@
                     @endif
 
                     <form
-                        action="{{ route('brand.update',$brand) }}"
+                        action="{{ route('shoes.update',$shoe) }}"
                         method="POST"
                         enctype="multipart/form-data"
                     >
                         <div class="form-group">
                             <label>Título *</label>
-                            <input type="title" name="title" value="{{ $brand->title }}" class="form-control" required>
+                            <input type="title" name="title" value="{{ $shoe->title }}" class="form-control" required>
 
                         </div>
                         {{-- <div class="form-group">
@@ -32,7 +32,7 @@
                         </div> --}}
                         <div class="form-group mt-2">
                             <label>Descripción *</label>
-                            <input type="description" name="title" value="{{ $brand->description }}" class="form-control" required>
+                            <input type="description" name="title" value="{{ $shoe->description }}" class="form-control" required>
 
 
                         </div>
