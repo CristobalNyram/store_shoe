@@ -17,7 +17,7 @@ $route_image_shoes ='storage/';
                         @foreach ($categories as  $category)
                         <ul class="list-group list-group-flush">
                             <li class="list-group-item">
-                                <a href="" class="card-link">
+                                <a  href="{{ route('catalog_category_products',$category->id) }}"  class="card-link">
                                 {{ $category->title }}
                                 </a>
                             </li>
@@ -57,7 +57,7 @@ $route_image_shoes ='storage/';
                     @foreach ($brands as  $brand)
                     <ul class="list-group list-group-flush">
                         <li class="list-group-item">
-                            <a href="" class="card-link">
+                            <a class="card-link">
                             {{ $brand->title }}
                             </a>
                         </li>

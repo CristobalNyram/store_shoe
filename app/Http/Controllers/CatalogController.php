@@ -104,4 +104,17 @@ class CatalogController extends Controller
     {
         //
     }
+
+    public function index_category_products($category_id)
+    {
+        $products_available=Shoe::all()->where('status','=','2')->where('category_id','=',$category_id);
+
+        $variables=
+        [
+            'menu'=>'categories',
+            'shoes'=>$products_available,
+
+        ];
+        return view('catalog.index_category_shoe')->with($variables);
+    }
 }

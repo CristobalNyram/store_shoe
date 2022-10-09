@@ -41,6 +41,7 @@ Route::group(['middleware' => 'auth'], function () {
 
         //categories start
         Route::resource('category', CategoryController::class);
+
         //categories end
 
         //models start
@@ -67,6 +68,7 @@ Route::group(['middleware' => 'auth'], function () {
 
         //catalaog start
         Route::resource('catalog', CatalogController::class);
+        Route::get('/catalog/category/{category_id}', [CatalogController::class, "index_category_products"])->name('catalog_category_products');
 
 
         //catalog end

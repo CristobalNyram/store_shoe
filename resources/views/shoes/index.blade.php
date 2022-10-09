@@ -95,9 +95,9 @@
                                                 <a href="{{ route('shoes.edit',$shoe)  }}" type="button" rel="tooltip"  class="btn btn-info btn-sm btn-icon">
                                                     <i class="bi bi-pen text-white">Editar</i>
                                                 </a>
-                                                <button type="button" rel="tooltip" class="btn btn-success btn-sm btn-icon">
+                                                {{-- <button type="button" rel="tooltip" class="btn btn-success btn-sm btn-icon">
                                                     <i class="now-ui-icons ui-2_settings-90">Ver</i>
-                                                </button>
+                                                </button> --}}
 
                                                 <form  method="POST" action="{{ route('shoes.destroy',$shoe)}}" >
                                                     @csrf
