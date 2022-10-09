@@ -23,17 +23,68 @@
                     >
                         <div class="form-group">
                             <label>Título *</label>
-                            <input type="title" name="title" class="form-control" required>
-                            <input type="hidden" value="2" class="form-control" required>
+                            <input type="text" name="title" class="form-control" required>
 
                         </div>
-                        {{-- <div class="form-group">
-                            <label>Image</label>
+                        <div class="form-group row">
+                            <label>Imagen</label>
                             <input type="file" name="file">
-                        </div> --}}
+                        </div>
                         <div class="form-group mt-2">
                             <label>Descripción *</label>
                             <textarea name="description" rows="6" class="form-control" required></textarea>
+                        </div>
+                        <div class="form-group mt-2">
+                            <label>Precio ($) *</label>
+                            <input type="number" name="price" class="form-control" required>
+
+                        </div>
+                        <div class="form-group mt-2">
+                            <label>Stock (cantidad en inventario) *</label>
+                            <input type="number" name="stock" class="form-control" required>
+
+                        </div>
+
+
+                        <div class="form-group mt-2">
+                            <label>Categoria *</label>
+                            <div class="form-group">
+                                <select class="form-control" id="exampleFormControlSelect1">
+                                  <option>1</option>
+                                  <option>2</option>
+                                  <option>3</option>
+                                  <option>4</option>
+                                  <option>5</option>
+                                </select>
+                              </div>
+                        </div>
+
+                        <div class="form-group mt-2">
+                            <label>Modelo *</label>
+                            <div class="form-group">
+                                <select class="form-control" id="exampleFormControlSelect1">
+                                  <option>1</option>
+                                  <option>2</option>
+                                  <option>3</option>
+                                  <option>4</option>
+                                  <option>5</option>
+                                </select>
+                              </div>
+
+                        </div>
+
+                        <div class="form-group mt-2">
+                            <label>Marca *</label>
+                            <div class="form-group">
+                                <select class="form-control" id="exampleFormControlSelect1">
+                                  <option>1</option>
+                                  <option>2</option>
+                                  <option>3</option>
+                                  <option>4</option>
+                                  <option>5</option>
+                                </select>
+                              </div>
+
                         </div>
 
                         <div class="form-group mt-3">
