@@ -7,7 +7,7 @@
     <!-- CSRF Token -->
     <meta name="csrf-token" content="{{ csrf_token() }}">
 
-    <title>{{ config('app.name', 'Juan') }}</title>
+    <title>{{ config('app.name') }}</title>
 
     <!-- Scripts -->
     <script src="{{ asset('js/app.js') }}" defer></script>
@@ -52,6 +52,13 @@
                                 </li>
                             @endif
                         @else
+
+                            <li class="nav-item">
+                                <a class="nav-link" href="{{ route('catalog.index') }}">{{ __('Catalogo') }}</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="{{ route('shoes.index') }}">{{ __('Ventas') }}</a>
+                            </li>
 
                             <li class="nav-item">
                                 <a class="nav-link" href="{{ route('shoes.index') }}">{{ __('Zapatos') }}</a>

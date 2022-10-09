@@ -5,6 +5,8 @@ use App\Http\Controllers\BrandController;
 use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\ModelshoController;
 use App\Http\Controllers\ShoeController;
+use App\Http\Controllers\Catalalog;
+use App\Http\Controllers\CatalogController;
 
 /*
 |--------------------------------------------------------------------------
@@ -61,6 +63,12 @@ Route::group(['middleware' => 'auth'], function () {
 
          //report start
         //report end
+
+        //catalaog start
+        Route::resource('catalog', CatalogController::class);
+
+
+        //catalog end
 
 
 
