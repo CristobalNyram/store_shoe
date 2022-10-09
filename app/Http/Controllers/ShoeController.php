@@ -102,9 +102,16 @@ class ShoeController extends Controller
      */
     public function edit(Shoe $shoe)
     {
+        $categories_active=Category::all()->where('status','=','2');
+        $brands_active=Brand::all()->where('status','=','2');
+        $models_active=Modelsho::all()->where('status','=','2');
+
         $variables=
         [
             'menu'=>'shoes',
+            'categories'=>$categories_active,
+            'brands'=>$brands_active,
+            'models'=>$models_active,
             'shoe'=>$shoe
         ];
         return view('shoes.edit')->with($variables);
@@ -119,18 +126,24 @@ class ShoeController extends Controller
      */
     public function update(UpdateShoeRequest $request, Shoe $shoe)
     {
-        if(  $shoe->update([
-            'user_id' => auth()->user()->id
-              ] +$request->all())
-        )
-        {
-            return back()->with('success','Se ha actualizado correctamente');
+        $shoe->update(['user_id' => auth()->user()->id] +$request->all());
+          //imagen
+          if ($request->file('image_url')) {
+            $shoe->image_url = $request->file('image_url')->store('shoes', 'public');
         }
-        else
+
+        if($shoe->save())
         {
-            return back()->withErrors('No se ha actualizado correctamente');
+        return back()->with('success','Se ha actualizado correctamente');
 
         }
+        else
+         {
+             return back()->withErrors('No se ha actualizado correctamente');
+
+         }
+
+
     }
 
     /**

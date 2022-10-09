@@ -25,7 +25,14 @@ class UpdateShoeRequest extends FormRequest
     {
         return [
             'title'=>'required',
-            'description'=>'required'
+            'description'=>'required',
+            'price'=>'required|numeric',
+            'stock'=>'required|numeric',
+            'category_id'=>'required|min:1',
+            'model_id'=>'required|min:1',
+            'image_url'=>'image|mimes:jpeg,png,jpg,gif',
+            'brand_id'=>'required|min:1',
+
         ];
     }
 }
