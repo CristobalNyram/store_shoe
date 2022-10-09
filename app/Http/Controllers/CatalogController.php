@@ -33,8 +33,8 @@ class CatalogController extends Controller
             'menu'=>'categories',
             'shoes'=>$products_available,
             'brands'=>$brands,
-            'categories'=>$models,
-            'models'=>$categories,
+            'categories'=>$categories,
+            'models'=>$models,
         ];
         return view('catalog.index')->with($variables);
     }
@@ -107,12 +107,14 @@ class CatalogController extends Controller
 
     public function index_category_products($category_id)
     {
+        $current_category= Category::findOrFail($category_id);
         $products_available=Shoe::all()->where('status','=','2')->where('category_id','=',$category_id);
 
         $variables=
         [
             'menu'=>'categories',
             'shoes'=>$products_available,
+            'current_category'=>$current_category
 
         ];
         return view('catalog.index_category_shoe')->with($variables);

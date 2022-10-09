@@ -7,7 +7,7 @@
             <a  href="{{ route('shoes.index') }}" type="button" class="btn btn-warning mb-3 text-white" >Regresar</a>
 
             <div class="card">
-                <div class="card-header">Crear Marca</div>
+                <div class="card-header">Crear ZAPATO</div>
 
                 <div class="card-body">
                     @if (session('success'))
