@@ -7,6 +7,9 @@ use App\Models\Shoe;
 
 use App\Http\Requests\StoreCatalogRequest;
 use App\Http\Requests\UpdateCatalogRequest;
+use App\Models\Brand;
+use App\Models\Category;
+use App\Models\Modelsho;
 
 class CatalogController extends Controller
 {
@@ -18,13 +21,20 @@ class CatalogController extends Controller
     public function index()
     {
 
-        // $categories = Catalog::all()->where('status','=','2');
+         $categories = Category::all()->where('status','=','2');
+         $models = Modelsho::all()->where('status','=','2');
+         $brands = Brand::all()->where('status','=','2');
+
+
         $products_available= Shoe::all()->where('status','=','2');
 
         $variables=
         [
             'menu'=>'categories',
-            'shoes'=>$products_available
+            'shoes'=>$products_available,
+            'brands'=>$brands,
+            'categories'=>$models,
+            'models'=>$categories,
         ];
         return view('catalog.index')->with($variables);
     }

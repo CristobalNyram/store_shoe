@@ -9,10 +9,23 @@ $route_image_shoes ='storage/';
         <div class="col-md-4">
             <div class="card">
                 <div class="card-header d-flex justify-content-between">{{ __('Categorias') }}
+
                 </div>
 
                 <div class="card-body">
+                    <ul class="list-group list-group-flush">
+                        @foreach ($categories as  $category)
+                        <ul class="list-group list-group-flush">
+                            <li class="list-group-item">
+                                <a href="" class="card-link">
+                                {{ $category->title }}
+                                </a>
+                            </li>
 
+                          </ul>
+                        @endforeach
+
+                      </ul>
                 </div>
             </div>
         </div>
@@ -22,7 +35,16 @@ $route_image_shoes ='storage/';
                 </div>
 
                 <div class="card-body">
+                    @foreach ($models as  $model)
+                    <ul class="list-group list-group-flush">
+                        <li class="list-group-item">
+                            <a href="" class="card-link">
+                            {{ $model->title }}
+                            </a>
+                        </li>
 
+                      </ul>
+                    @endforeach
                 </div>
             </div>
         </div>
@@ -32,7 +54,16 @@ $route_image_shoes ='storage/';
                 </div>
 
                 <div class="card-body">
+                    @foreach ($brands as  $brand)
+                    <ul class="list-group list-group-flush">
+                        <li class="list-group-item">
+                            <a href="" class="card-link">
+                            {{ $brand->title }}
+                            </a>
+                        </li>
 
+                      </ul>
+                    @endforeach
                 </div>
             </div>
         </div>
@@ -64,7 +95,7 @@ $route_image_shoes ='storage/';
                         <li class="list-group-item">Existentes: {{ $shoe->stock }}  </li>
                         </ul>
                         <div class="card-body">
-                        <a href="#" class="card-link">Más informacion</a>
+                        <a href="{{  route('shoes.show',$shoe) }}" class="card-link">Más informacion</a>
                         </div>
                     </div>
                     @endforeach
