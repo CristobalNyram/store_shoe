@@ -15,7 +15,16 @@ class CategoryController extends Controller
      */
     public function index()
     {
-        //
+
+        $categories = Category::all()->where('status','=','2');
+
+        $variables=
+        [
+            'menu'=>'categories',
+            'categories_available'=>$categories
+        ];
+        return view('categories.index')->with($variables);
+
     }
 
     /**
@@ -25,7 +34,11 @@ class CategoryController extends Controller
      */
     public function create()
     {
-        //
+        $variables=
+        [
+            'menu'=>'categories',
+        ];
+        return view('categories.create')->with($variables);
     }
 
     /**
@@ -36,7 +49,20 @@ class CategoryController extends Controller
      */
     public function store(StoreCategoryRequest $request)
     {
-        //
+
+        $request_input = Category::create($request->all());
+
+
+
+        if($request_input->save())
+        {
+            return back()->with('success','Se ha creado correctamente');
+        }
+        else
+        {
+            return back()->withErrors('No se ha creado correctamente');
+
+        }
     }
 
     /**
@@ -47,7 +73,7 @@ class CategoryController extends Controller
      */
     public function show(Category $category)
     {
-        //
+
     }
 
     /**
@@ -58,7 +84,12 @@ class CategoryController extends Controller
      */
     public function edit(Category $category)
     {
-        //
+        $variables=
+        [
+            'menu'=>'categories',
+            'category'=>$category
+        ];
+        return view('categories.edit')->with($variables);
     }
 
     /**
@@ -70,7 +101,16 @@ class CategoryController extends Controller
      */
     public function update(UpdateCategoryRequest $request, Category $category)
     {
-        //
+
+        if(  $category->update($request->all()))
+        {
+            return back()->with('success','Se ha actualizado correctamente');
+        }
+        else
+        {
+            return back()->withErrors('No se ha actualizado correctamente');
+
+        }
     }
 
     /**
@@ -81,6 +121,15 @@ class CategoryController extends Controller
      */
     public function destroy(Category $category)
     {
-        //
+        $category->status=-2;
+       if($category->update())
+       {
+        return back()->with('success','Se ha actualizado correctamente');
+        }
+        else
+        {
+            return back()->withErrors('No se ha actualizado correctamente');
+
+        }
     }
 }

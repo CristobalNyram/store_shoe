@@ -41,13 +41,13 @@ Route::group(['middleware' => 'auth'], function () {
         //categories end
 
         //models start
-        Route::resource('category', ModelshoController::class);
+        Route::resource('models', ModelshoController::class);
 
         //models end
 
 
         //shoes start
-        Route::resource('category', ShoeController::class);
+        Route::resource('shoe', ShoeController::class);
 
         //shoes end
 
