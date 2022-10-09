@@ -44,7 +44,7 @@
                                 @foreach ($categories_available as $category )
                                 <tr>
 
-                                            <td class="text-center">1</td>
+                                            <td class="text-center">#{{ $category->id }}</td>
                                             <td>{{ $category->title }}</td>
                                             <td>{{ $category->description }}</td>
                                             <td>

@@ -4,7 +4,7 @@
 <div class="container">
     <div class="row justify-content-center">
         <div class="col-md-8">
-            <a  href="{{ route('models.index') }}" type="button" class="btn btn-warning mb-3 text-white" >Regresar</a>
+            <a  href="{{ route('modelsho.index') }}" type="button" class="btn btn-warning mb-3 text-white" >Regresar</a>
 
             <div class="card">
                 <div class="card-header">Crear modelo</div>
@@ -30,7 +30,7 @@
                      @endif
 
                     <form
-                        action="{{ route('models.store') }}"
+                        action="{{ route('modelsho.store') }}"
                         method="POST"
                         enctype="multipart/form-data"
                     >

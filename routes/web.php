@@ -41,7 +41,7 @@ Route::group(['middleware' => 'auth'], function () {
         //categories end
 
         //models start
-        Route::resource('models', ModelshoController::class);
+        Route::resource('modelsho', ModelshoController::class);
 
         //models end
 

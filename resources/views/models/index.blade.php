@@ -6,7 +6,7 @@
         <div class="col-md-10">
             <div class="card">
                 <div class="card-header d-flex justify-content-between">{{ __('Modelos') }}
-                    <a href="{{ route('models.create') }}" class="btn btn-sm btn-primary ">Crear</a>
+                    <a href="{{ route('modelsho.create') }}" class="btn btn-sm btn-primary ">Crear</a>
                 </div>
 
                 <div class="card-body">
@@ -44,7 +44,7 @@
                                 @foreach ($models as $modelsho )
                                 <tr>
 
-                                            <td class="text-center">1</td>
+                                            <td class="text-center">#{{ $modelsho->id }}</td>
                                             <td>{{ $modelsho->title }}</td>
                                             <td>{{ $modelsho->description }}</td>
                                             <td>
@@ -63,14 +63,14 @@
                                               @endif
                                             </td>
                                             <td class="td-actions d-flex justify-content-around">
-                                                <a href="{{ route('models.edit',$modelsho)  }}" type="button" rel="tooltip"  class="btn btn-info btn-sm btn-icon">
+                                                <a href="{{ route('modelsho.edit',$modelsho)  }}" type="button" rel="tooltip"  class="btn btn-info btn-sm btn-icon">
                                                     <i class="bi bi-pen text-white">Editar</i>
                                                 </a>
                                                 <button type="button" rel="tooltip" class="btn btn-success btn-sm btn-icon">
                                                     <i class="now-ui-icons ui-2_settings-90">Ver</i>
                                                 </button>
 
-                                                <form  method="POST" action="{{ route('models.destroy',$modelsho)}}" >
+                                                <form  method="POST" action="{{ route('modelsho.destroy',$modelsho)}}" >
                                                     @csrf
                                                     @method('DELETE')
 

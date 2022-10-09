@@ -44,7 +44,7 @@
                                 @foreach ($brands_available as $brand )
                                 <tr>
 
-                                            <td class="text-center">1</td>
+                                            <td class="text-center">#{{ $brand->id }}</td>
                                             <td>{{ $brand->title }}</td>
                                             <td>{{ $brand->description }}</td>
                                             <td>

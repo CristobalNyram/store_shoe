@@ -82,11 +82,10 @@ class ModelshoController extends Controller
     {
         $variables=
         [
-            'menu'=>'categories',
+            'menu'=>'models',
             'models'=>$modelsho
         ];
-        return $modelsho;
-        //  view('models.edit')->with($variables);
+        return        view('models.edit')->with($variables);
     }
 
     /**
