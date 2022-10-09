@@ -91,7 +91,15 @@ class ShoeController extends Controller
      */
     public function show(Shoe $shoe)
     {
-        //
+
+
+        $variables=
+        [
+            'menu'=>'shoes',
+            'shoe'=>$shoe,
+
+        ];
+        return view('shoes.show')->with($variables);
     }
 
     /**
