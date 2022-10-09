@@ -15,6 +15,9 @@ class CreateModelshosTable extends Migration
     {
         Schema::create('modelshos', function (Blueprint $table) {
             $table->id();
+            $table->string('title');
+            $table->string('description');
+            $table->boolean('status');
             $table->timestamps();
         });
     }

@@ -7,7 +7,7 @@
             <a  href="{{ route('brand.index') }}" type="button" class="btn btn-warning mb-3 text-white" >Regresar</a>
 
             <div class="card">
-                <div class="card-header">Editar Marca</div>
+                <div class="card-header">Crear Marca</div>
 
                 <div class="card-body">
                     @if (session('success'))
@@ -17,13 +17,14 @@
                     @endif
 
                     <form
-                        action="{{ route('brand.update',$brand) }}"
+                        action="{{ route('brand.store') }}"
                         method="POST"
                         enctype="multipart/form-data"
                     >
                         <div class="form-group">
                             <label>Título *</label>
-                            <input type="title" name="title" value="{{ $brand->title }}" class="form-control" required>
+                            <input type="title" name="title" class="form-control" required>
+                            <input type="hidden" value="2" class="form-control" required>
 
                         </div>
                         {{-- <div class="form-group">
@@ -32,15 +33,12 @@
                         </div> --}}
                         <div class="form-group mt-2">
                             <label>Descripción *</label>
-                            <input type="description" name="title" value="{{ $brand->description }}" class="form-control" required>
-
-
+                            <textarea name="description" rows="6" class="form-control" required></textarea>
                         </div>
 
                         <div class="form-group mt-3">
-                            @method('PUT')
                             @csrf
-                            <input type="submit" value="Actualizar" class="btn btn-sm btn-primary">
+                            <input type="submit" value="Guardar" class="btn btn-sm btn-primary">
                         </div>
                     </form>
                 </div>

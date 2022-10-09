@@ -1,6 +1,10 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\BrandController;
+use App\Http\Controllers\CategoryController;
+use App\Http\Controllers\ModelshoController;
+use App\Http\Controllers\ShoeController;
 
 /*
 |--------------------------------------------------------------------------
@@ -28,17 +32,22 @@ Route::group(['middleware' => 'auth'], function () {
 
 
         //brand start
-        // Route::resource('brand','BrandController');
-        //bran end
+        Route::resource('brand', BrandController::class);
+        //brand end
 
 
         //categories start
+        Route::resource('category', CategoryController::class);
         //categories end
 
         //models start
+        Route::resource('category', ModelshoController::class);
+
         //models end
 
+
         //shoes start
+        Route::resource('category', ShoeController::class);
 
         //shoes end
 

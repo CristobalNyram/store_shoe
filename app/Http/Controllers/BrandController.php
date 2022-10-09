@@ -15,7 +15,16 @@ class BrandController extends Controller
      */
     public function index()
     {
-        //
+        $brands = Brand::all()->where('status','=','2');
+
+        $variables=
+        [
+            'menu'=>'brands',
+            'brands_available'=>$brands
+        ];
+
+
+      return view('brands.index')->with($variables);
     }
 
     /**
@@ -25,7 +34,14 @@ class BrandController extends Controller
      */
     public function create()
     {
-        //
+        $variables=
+        [
+            'menu'=>'brands',
+            'brands_available'
+        ];
+
+
+      return view('brands.create')->with($variables);
     }
 
     /**
@@ -36,7 +52,21 @@ class BrandController extends Controller
      */
     public function store(StoreBrandRequest $request)
     {
-        //
+        $request_input = Brand::create($request->all());
+
+
+
+        if($request_input->save())
+        {
+            return back()->with('success','Se ha creado correctamente');
+        }
+        else
+        {
+            return back()->withErrors('No se ha creado correctamente');
+
+        }
+
+
     }
 
     /**
@@ -47,7 +77,14 @@ class BrandController extends Controller
      */
     public function show(Brand $brand)
     {
-        //
+
+        $variables=
+        [
+            'menu'=>'brands',
+            'brands_available'
+        ];
+
+      return view('brands.show')->with($variables);
     }
 
     /**
@@ -58,7 +95,13 @@ class BrandController extends Controller
      */
     public function edit(Brand $brand)
     {
-        //
+        $variables=
+        [
+            'menu'=>'brands',
+            'brand'=>$brand
+        ];
+        return view('brands.edit')->with($variables);
+
     }
 
     /**
@@ -70,7 +113,18 @@ class BrandController extends Controller
      */
     public function update(UpdateBrandRequest $request, Brand $brand)
     {
-        //
+
+
+        if(  $brand->update($request->all()))
+        {
+            return back()->with('success','Se ha actualizado correctamente');
+        }
+        else
+        {
+            return back()->withErrors('No se ha actualizado correctamente');
+
+        }
+
     }
 
     /**
@@ -81,6 +135,15 @@ class BrandController extends Controller
      */
     public function destroy(Brand $brand)
     {
-        //
+       $brand->status=2;
+
+       if($brand->update())
+       {
+
+       }
+       else
+       {
+
+       }
     }
 }
