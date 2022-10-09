@@ -47,11 +47,19 @@ class ShoeController extends Controller
      */
     public function store(StoreShoeRequest $request)
     {
-        $request_input = Shoe::create($request->all());
+        $post = Shoe::create([
+            'user_id' => auth()->user()->id
+        ] + $request->all());
+
+        //imagen
+        if ($request->file('file')) {
+            $post->image_url = $request->file('file')->store('shoes', 'public');
+            $post->save();
+        }
 
 
 
-        if($request_input->save())
+        if($post->save())
         {
             return back()->with('success','Se ha creado correctamente');
         }
